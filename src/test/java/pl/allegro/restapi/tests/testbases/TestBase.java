@@ -8,9 +8,9 @@ import pl.allegro.restapi.main.authentication.AppAuthentication;
 import pl.allegro.restapi.main.logging.filters.LoggingFilters;
 import pl.allegro.restapi.main.properties.EnvironmentConfig;
 
-public class SuiteTestBase {
+public class TestBase {
 
-        EnvironmentConfig environmentConfig = ConfigFactory.create(EnvironmentConfig.class);
+        public EnvironmentConfig environmentConfig = ConfigFactory.create(EnvironmentConfig.class);
 
         @BeforeClass
         public void setupConfiguration(){
