@@ -7,7 +7,7 @@ import static io.restassured.RestAssured.given;
 import static pl.allegro.restapi.main.authentication.ClientCredentials.CLIENT_ID;
 import static pl.allegro.restapi.main.authentication.ClientCredentials.CLIENT_SECRET;
 
-public class AppAuthentication {
+public class Authentication {
 
     public static String getAccessToken() {
         EnvironmentConfig environmentConfig = ConfigFactory.create(EnvironmentConfig.class);
