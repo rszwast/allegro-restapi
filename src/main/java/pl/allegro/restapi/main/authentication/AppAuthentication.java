@@ -4,6 +4,8 @@ import org.aeonbits.owner.ConfigFactory;
 import pl.allegro.restapi.main.properties.EnvironmentConfig;
 
 import static io.restassured.RestAssured.given;
+import static pl.allegro.restapi.main.authentication.ClientCredentials.CLIENT_ID;
+import static pl.allegro.restapi.main.authentication.ClientCredentials.CLIENT_SECRET;
 
 public class AppAuthentication {
 
@@ -12,10 +14,10 @@ public class AppAuthentication {
 
         String accessToken = given()
                 .formParam("grant_type", "client_credentials")
-                .auth().preemptive().basic(ClientCredentials.CLIENT_ID, ClientCredentials.CLIENT_SECRET)
+                .auth().preemptive().basic(CLIENT_ID, CLIENT_SECRET)
                 .contentType("application/x-www-form-urlencoded")
                 .when()
-                .post(environmentConfig.baseUri(), environmentConfig.tokenPath())
+                .post(environmentConfig.tokenUri())
                 .then().extract().jsonPath().getString("access_token");
         return accessToken;
     }
