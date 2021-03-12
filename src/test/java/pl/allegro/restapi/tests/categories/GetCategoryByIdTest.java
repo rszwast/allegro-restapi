@@ -3,9 +3,9 @@ package pl.allegro.restapi.tests.categories;
 import org.apache.http.HttpStatus;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
-import pl.allegro.restapi.main.pojo.Categories;
-import pl.allegro.restapi.main.pojo.Category;
-import pl.allegro.restapi.main.pojo.Options;
+import pl.allegro.restapi.main.pojo.categories.Categories;
+import pl.allegro.restapi.main.pojo.categories.Category;
+import pl.allegro.restapi.main.pojo.categories.Options;
 import pl.allegro.restapi.tests.testbases.TestBase;
 
 import java.util.List;
@@ -28,6 +28,8 @@ public class GetCategoryByIdTest extends TestBase {
         Random random = new Random();
 
         Category expectedCategory = listOfExpectedCategories.get(random.nextInt(numerOfExpectedCategories));
+
+        Assertions.assertThat(expectedCategory.getLeaf()).isFalse();
 
         String expectedCategoryId = expectedCategory.getId();
         Boolean expectedLeaf = expectedCategory.getLeaf();
