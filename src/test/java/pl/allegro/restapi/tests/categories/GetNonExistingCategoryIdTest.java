@@ -11,7 +11,7 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
-public class GetNonExistingCategoryId extends TestBase {
+public class GetNonExistingCategoryIdTest extends TestBase {
 
     @Test
     public void givenNonExistingCategoryWhenGetCategoryThenNotFoundReturn(){
