@@ -13,7 +13,7 @@ public class GetCategoriesTest extends TestBase {
     @Test
     public void givenCategoriesWhenGetCategoriesThenReturnListOfAllCategories() {
         Response response = given()
-                .when().get(environmentConfig.salePath() + endpointConfig.getAllCategoriesPath())
+                .when().get(endpointConfig.getAllCategoriesPath())
                 .then().extract().response();
 
         Assertions.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.SC_OK);

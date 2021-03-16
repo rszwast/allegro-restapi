@@ -20,7 +20,7 @@ public class GetNonExistingCategoryIdTest extends TestBase {
     @Test
     public void givenNonExistingCategoryWhenGetCategoryThenNotFoundReturn(){
         Categories categories = given()
-                .when().get(environmentConfig.salePath() + endpointConfig.getAllCategoriesPath())
+                .when().get(endpointConfig.getAllCategoriesPath())
                 .then().statusCode(HttpStatus.SC_OK).extract().as(Categories.class);
 
         List<Category> listOfCategories = categories.getCategories();
@@ -33,26 +33,22 @@ public class GetNonExistingCategoryIdTest extends TestBase {
             listOfCategoryIds.add(categoryId);
         }
 
-        System.out.println(listOfCategoryIds);
-
         Random random = new Random();
         String nonExistingCategoryId;
 
         do {
             nonExistingCategoryId = Integer.toString(random.nextInt());
-            System.out.println("Non existing category: " + nonExistingCategoryId);
         } while (listOfCategoryIds.contains(nonExistingCategoryId));
 
-        System.out.println("Non existing: " + nonExistingCategoryId);
-
         Errors errors = given()
-                .when().get(environmentConfig.salePath() + endpointConfig.getCategoryByIdPath(), nonExistingCategoryId)
+                .when().get(endpointConfig.getCategoryByIdPath(), nonExistingCategoryId)
                 .then().statusCode(HttpStatus.SC_NOT_FOUND).extract().as(Errors.class);
 
         List<Error> errorsList = errors.getErrors();
         Error error = errorsList.get(0);
 
-        Assertions.assertThat(error.getCode()).isEqualTo("NotFoundException");
+        Assertions.assertThat(error.getCode()).isEqualTo("ERROR");
+        Assertions.assertThat(error.getMessage()).isEqualTo("Category '" + nonExistingCategoryId + "' not found");
 
     }
 

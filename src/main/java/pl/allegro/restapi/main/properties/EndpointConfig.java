@@ -3,7 +3,7 @@ package pl.allegro.restapi.main.properties;
 import org.aeonbits.owner.Config;
 
 @Config.Sources("classpath:EndpointConfig.properties")
-public interface EndpointConfig extends Config{
+public interface EndpointConfig extends Config {
 
     @Key("GET_ALL_CATEGORIES_PATH")
     String getAllCategoriesPath();

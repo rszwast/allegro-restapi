@@ -20,7 +20,7 @@ public class GetParametersByCategoryIdTest extends TestBase {
     @Test
     public void givenCategoryIdWhenGetParametersThenReturnListOfParameters() {
         Categories categories = given()
-                .when().get(environmentConfig.salePath() + endpointConfig.getAllCategoriesPath())
+                .when().get(endpointConfig.getAllCategoriesPath())
                 .then().statusCode(HttpStatus.SC_OK).extract().as(Categories.class);
 
         List<Category> listOfCategories = categories.getCategories();
@@ -33,7 +33,7 @@ public class GetParametersByCategoryIdTest extends TestBase {
         String categoryId = category.getId();
 
         Parameters parameters = given()
-                .when().get(environmentConfig.salePath() + endpointConfig.getParametersByCategoryPath(), categoryId)
+                .when().get(endpointConfig.getParametersByCategoryPath(), categoryId)
                 .then().statusCode(HttpStatus.SC_OK).extract().as(Parameters.class);
 
         List<Parameter> listOfParameters = parameters.getParameters();
