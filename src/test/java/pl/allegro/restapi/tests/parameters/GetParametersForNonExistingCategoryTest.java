@@ -21,7 +21,7 @@ public class GetParametersForNonExistingCategoryTest extends TestBase {
     @Test
     public void givenNonExistingCategoryIdWhenGetParametersThenReturnNotFound(){
         Categories categories = given()
-                .when().get(environmentConfig.salePath() + "/categories")
+                .when().get(environmentConfig.salePath() + endpointConfig.getAllCategoriesPath())
                 .then().statusCode(HttpStatus.SC_OK).extract().as(Categories.class);
 
         List<Category> listOfCategories = categories.getCategories();
@@ -47,7 +47,7 @@ public class GetParametersForNonExistingCategoryTest extends TestBase {
         System.out.println("Non existing: " + nonExistingCategoryId);
 
         Errors errors = given()
-                .when().get(environmentConfig.salePath() + "/categories/{categoryId}/parameters", nonExistingCategoryId)
+                .when().get(environmentConfig.salePath() + endpointConfig.getParametersByCategoryPath(), nonExistingCategoryId)
                 .then().statusCode(HttpStatus.SC_NOT_FOUND).extract().as(Errors.class);
 
         List<Error> errorsList = errors.getErrors();

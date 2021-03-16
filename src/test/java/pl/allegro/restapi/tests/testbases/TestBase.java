@@ -5,6 +5,7 @@ import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import org.aeonbits.owner.ConfigFactory;
 import org.testng.annotations.BeforeClass;
+import pl.allegro.restapi.main.properties.EndpointConfig;
 import pl.allegro.restapi.main.properties.EnvironmentConfig;
 import pl.allegro.restapi.main.request.configuration.RequestConfigurationBuilder;
 
@@ -12,6 +13,7 @@ import pl.allegro.restapi.main.request.configuration.RequestConfigurationBuilder
 public class TestBase {
 
     public EnvironmentConfig environmentConfig = ConfigFactory.create(EnvironmentConfig.class);
+    public EndpointConfig endpointConfig = ConfigFactory.create(EndpointConfig.class);
 
     @BeforeClass
     public void setupConfiguration() {
