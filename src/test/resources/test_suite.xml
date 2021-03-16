@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="REST API tests">
+
+    <test name="Get IDs of Allegro categories">
+        <classes>
+            <class name="pl.allegro.restapi.tests.categories.GetCategoriesTest"/>
+        </classes>
+    </test>
+
+    <test name="Get a category by ID">
+        <classes>
+            <class name="pl.allegro.restapi.tests.categories.GetCategoryByIdTest"/>
+        </classes>
+    </test>
+
+    <test name="Get a category by non existing ID">
+        <classes>
+            <class name="pl.allegro.restapi.tests.categories.GetNonExistingCategoryIdTest"/>
+        </classes>
+    </test>
+
+    <test name="Get parameters supported by a category">
+        <classes>
+            <class name="pl.allegro.restapi.tests.parameters.GetParametersByCategoryIdTest"/>
+        </classes>
+    </test>
+
+    <test name="Get parameters supported by non existing category">
+        <classes>
+            <class name="pl.allegro.restapi.tests.parameters.GetParametersForNonExistingCategoryTest"/>
+        </classes>
+    </test>
+
+
+
+</suite>
