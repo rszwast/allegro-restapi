@@ -4,9 +4,9 @@ Integration test project based on Allegro REST API
 
 ## Technologies used
 
-* java, v1.8
+* java
 * maven
-* rest-assured framework, v4.3.0
+* rest-assured framework
 * testNG
 * assertJ
 
