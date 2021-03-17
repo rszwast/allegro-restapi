@@ -11,7 +11,4 @@ public interface EnvironmentConfig extends Config {
     @Key("BASE_URI")
     String baseUri();
 
-    @Key("SALE_PATH")
-    String salePath();
-
 }
