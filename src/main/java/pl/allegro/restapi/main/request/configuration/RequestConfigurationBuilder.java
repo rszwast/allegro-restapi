@@ -10,7 +10,9 @@ import static io.restassured.config.ObjectMapperConfig.objectMapperConfig;
 
 public class RequestConfigurationBuilder {
 
-    public RequestSpecBuilder getRequestSpecBuilder() {
+    private RequestConfigurationBuilder(){}
+
+    public static RequestSpecBuilder getRequestSpecBuilder() {
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
         return requestSpecBuilder
                 .setConfig(RestAssuredConfig.config().objectMapperConfig(objectMapperConfig().defaultObjectMapperType(ObjectMapperType.GSON)))
