@@ -11,13 +11,14 @@ import java.util.List;
 import java.util.Random;
 
 import static io.restassured.RestAssured.given;
+import static pl.allegro.restapi.main.properties.EndpointManager.getEndpointConfig;
 
 public class GetCategoryByIdTest extends TestBase {
 
     @Test
     public void givenRandomCategoryFromCategoriesWhenGetCategoryThenReturnCategory() {
         Categories expectedCategories = given()
-                .when().get(endpointConfig.getAllCategoriesPath())
+                .when().get(getEndpointConfig().getAllCategoriesPath())
                 .then().statusCode(HttpStatus.SC_OK).extract().as(Categories.class);
 
         List<Category> listOfExpectedCategories = expectedCategories.getCategories();
@@ -34,7 +35,7 @@ public class GetCategoryByIdTest extends TestBase {
 
 
         Category category = given()
-                .when().get(endpointConfig.getCategoryByIdPath(), expectedCategoryId)
+                .when().get(getEndpointConfig().getCategoryByIdPath(), expectedCategoryId)
                 .then().statusCode(HttpStatus.SC_OK).extract().as(Category.class);
 
 

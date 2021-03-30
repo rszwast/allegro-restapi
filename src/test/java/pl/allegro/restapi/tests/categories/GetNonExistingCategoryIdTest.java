@@ -14,13 +14,14 @@ import java.util.List;
 import java.util.Random;
 
 import static io.restassured.RestAssured.given;
+import static pl.allegro.restapi.main.properties.EndpointManager.getEndpointConfig;
 
 public class GetNonExistingCategoryIdTest extends TestBase {
 
     @Test
     public void givenNonExistingCategoryWhenGetCategoryThenNotFoundReturn(){
         Categories categories = given()
-                .when().get(endpointConfig.getAllCategoriesPath())
+                .when().get(getEndpointConfig().getAllCategoriesPath())
                 .then().statusCode(HttpStatus.SC_OK).extract().as(Categories.class);
 
         List<Category> listOfCategories = categories.getCategories();
@@ -41,7 +42,7 @@ public class GetNonExistingCategoryIdTest extends TestBase {
         } while (listOfCategoryIds.contains(nonExistingCategoryId));
 
         Errors errors = given()
-                .when().get(endpointConfig.getCategoryByIdPath(), nonExistingCategoryId)
+                .when().get(getEndpointConfig().getCategoryByIdPath(), nonExistingCategoryId)
                 .then().statusCode(HttpStatus.SC_NOT_FOUND).extract().as(Errors.class);
 
         List<Error> errorsList = errors.getErrors();

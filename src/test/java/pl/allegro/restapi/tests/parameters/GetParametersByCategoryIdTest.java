@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Random;
 
 import static io.restassured.RestAssured.given;
+import static pl.allegro.restapi.main.properties.EndpointManager.getEndpointConfig;
 
 
 public class GetParametersByCategoryIdTest extends TestBase {
@@ -20,7 +21,7 @@ public class GetParametersByCategoryIdTest extends TestBase {
     @Test
     public void givenCategoryIdWhenGetParametersThenReturnListOfParameters() {
         Categories categories = given()
-                .when().get(endpointConfig.getAllCategoriesPath())
+                .when().get(getEndpointConfig().getAllCategoriesPath())
                 .then().statusCode(HttpStatus.SC_OK).extract().as(Categories.class);
 
         List<Category> listOfCategories = categories.getCategories();
@@ -33,7 +34,7 @@ public class GetParametersByCategoryIdTest extends TestBase {
         String categoryId = category.getId();
 
         Parameters parameters = given()
-                .when().get(endpointConfig.getParametersByCategoryPath(), categoryId)
+                .when().get(getEndpointConfig().getParametersByCategoryPath(), categoryId)
                 .then().statusCode(HttpStatus.SC_OK).extract().as(Parameters.class);
 
         List<Parameter> listOfParameters = parameters.getParameters();
