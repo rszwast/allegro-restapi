@@ -4,31 +4,31 @@
 
     <test name="Get IDs of Allegro categories">
         <classes>
-            <class name="pl.allegro.restapi.tests.categories.GetCategoriesTest"/>
+            <class name="pl.allegro.restapi.categories.GetCategoriesTest"/>
         </classes>
     </test>
 
     <test name="Get a category by ID">
         <classes>
-            <class name="pl.allegro.restapi.tests.categories.GetCategoryByIdTest"/>
+            <class name="pl.allegro.restapi.categories.GetCategoryByIdTest"/>
         </classes>
     </test>
 
     <test name="Get a category by non existing ID">
         <classes>
-            <class name="pl.allegro.restapi.tests.categories.GetNonExistingCategoryIdTest"/>
+            <class name="pl.allegro.restapi.categories.GetNonExistingCategoryIdTest"/>
         </classes>
     </test>
 
     <test name="Get parameters supported by a category">
         <classes>
-            <class name="pl.allegro.restapi.tests.parameters.GetParametersByCategoryIdTest"/>
+            <class name="pl.allegro.restapi.parameters.GetParametersByCategoryIdTest"/>
         </classes>
     </test>
 
     <test name="Get parameters supported by non existing category">
         <classes>
-            <class name="pl.allegro.restapi.tests.parameters.GetParametersForNonExistingCategoryTest"/>
+            <class name="pl.allegro.restapi.parameters.GetParametersForNonExistingCategoryTest"/>
         </classes>
     </test>
 
