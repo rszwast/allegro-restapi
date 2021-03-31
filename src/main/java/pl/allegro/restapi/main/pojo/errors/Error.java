@@ -3,9 +3,9 @@ package pl.allegro.restapi.main.pojo.errors;
 public class Error {
 
     private String code;
-    private Object details;
+    private String details;
     private String message;
-    private Object path;
+    private String path;
     private String userMessage;
 
     public String getCode() {
@@ -20,7 +20,7 @@ public class Error {
         return details;
     }
 
-    public void setDetails(Object details) {
+    public void setDetails(String details) {
         this.details = details;
     }
 
@@ -36,7 +36,7 @@ public class Error {
         return path;
     }
 
-    public void setPath(Object path) {
+    public void setPath(String path) {
         this.path = path;
     }
 

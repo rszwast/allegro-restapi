@@ -17,9 +17,10 @@ public class GetCategoryByIdTest extends TestBase {
 
     @Test
     public void givenRandomCategoryFromCategoriesWhenGetCategoryThenReturnCategory() {
+        //given
         Categories expectedCategories = given()
-                .when().
-                        get(getEndpointConfig().getAllCategoriesPath())
+                .when()
+                    .get(getEndpointConfig().getAllCategoriesPath())
                 .then()
                     .statusCode(HttpStatus.SC_OK)
                     .extract().as(Categories.class);
@@ -36,7 +37,7 @@ public class GetCategoryByIdTest extends TestBase {
 
         String expectedCategoryId = expectedCategory.getId();
 
-
+        //when
         Category category = given()
                 .when()
                     .get(getEndpointConfig().getCategoryByIdPath(), expectedCategoryId)
@@ -44,7 +45,7 @@ public class GetCategoryByIdTest extends TestBase {
                     .statusCode(HttpStatus.SC_OK)
                     .extract().as(Category.class);
 
-
+        //then
         Assertions.assertThat(category).usingRecursiveComparison().isEqualTo(expectedCategory);
 
     }

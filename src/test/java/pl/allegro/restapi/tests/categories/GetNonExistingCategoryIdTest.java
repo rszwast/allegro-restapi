@@ -21,8 +21,11 @@ public class GetNonExistingCategoryIdTest extends TestBase {
     @Test
     public void givenNonExistingCategoryWhenGetCategoryThenNotFoundReturn(){
         Categories categories = given()
-                .when().get(getEndpointConfig().getAllCategoriesPath())
-                .then().statusCode(HttpStatus.SC_OK).extract().as(Categories.class);
+                .when()
+                    .get(getEndpointConfig().getAllCategoriesPath())
+                .then()
+                    .statusCode(HttpStatus.SC_OK)
+                    .extract().as(Categories.class);
 
         List<Category> listOfCategories = categories.getCategories();
 
@@ -42,15 +45,17 @@ public class GetNonExistingCategoryIdTest extends TestBase {
         } while (listOfCategoryIds.contains(nonExistingCategoryId));
 
         Errors errors = given()
-                .when().get(getEndpointConfig().getCategoryByIdPath(), nonExistingCategoryId)
-                .then().statusCode(HttpStatus.SC_NOT_FOUND).extract().as(Errors.class);
+                .when()
+                    .get(getEndpointConfig().getCategoryByIdPath(), nonExistingCategoryId)
+                .then()
+                    .statusCode(HttpStatus.SC_NOT_FOUND)
+                    .extract().as(Errors.class);
 
         List<Error> errorsList = errors.getErrors();
         Error error = errorsList.get(0);
 
         Assertions.assertThat(error.getCode()).isEqualTo("ERROR");
         Assertions.assertThat(error.getMessage()).isEqualTo("Category '" + nonExistingCategoryId + "' not found");
-
     }
 
 }

@@ -7,7 +7,7 @@ public class Parameter {
     private String type;
     private Boolean required;
     private Boolean requiredForProduct;
-    private Object unit;
+    private String unit;
     private Options options;
     private Restrictions restrictions;
 
@@ -55,7 +55,7 @@ public class Parameter {
         return unit;
     }
 
-    public void setUnit(Object unit) {
+    public void setUnit(String unit) {
         this.unit = unit;
     }
 

@@ -21,8 +21,11 @@ public class GetParametersByCategoryIdTest extends TestBase {
     @Test
     public void givenCategoryIdWhenGetParametersThenReturnListOfParameters() {
         Categories categories = given()
-                .when().get(getEndpointConfig().getAllCategoriesPath())
-                .then().statusCode(HttpStatus.SC_OK).extract().as(Categories.class);
+                .when()
+                    .get(getEndpointConfig().getAllCategoriesPath())
+                .then()
+                    .statusCode(HttpStatus.SC_OK)
+                    .extract().as(Categories.class);
 
         List<Category> listOfCategories = categories.getCategories();
 
@@ -34,8 +37,11 @@ public class GetParametersByCategoryIdTest extends TestBase {
         String categoryId = category.getId();
 
         Parameters parameters = given()
-                .when().get(getEndpointConfig().getParametersByCategoryPath(), categoryId)
-                .then().statusCode(HttpStatus.SC_OK).extract().as(Parameters.class);
+                .when()
+                    .get(getEndpointConfig().getParametersByCategoryPath(), categoryId)
+                .then()
+                    .statusCode(HttpStatus.SC_OK)
+                    .extract().as(Parameters.class);
 
         List<Parameter> listOfParameters = parameters.getParameters();
 
@@ -43,7 +49,6 @@ public class GetParametersByCategoryIdTest extends TestBase {
 
         for (int i = 0; i < sizeOfParameters; i++) {
             String parameterType = listOfParameters.get(i).getType();
-            System.out.println(parameterType);
             Assertions.assertThat(parameterType).isNotEmpty();
         }
 

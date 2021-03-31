@@ -6,7 +6,7 @@ public class Options {
 
     private Boolean variantsAllowed;
     private Boolean variantsEqual;
-    private Object ambiguousValueId;
+    private String ambiguousValueId;
     private String dependsOnParameterId;
     private List<String> requiredDependsOnValueIds = null;
     private List<String> displayDependsOnValueIds = null;
@@ -33,7 +33,7 @@ public class Options {
         return ambiguousValueId;
     }
 
-    public void setAmbiguousValueId(Object ambiguousValueId) {
+    public void setAmbiguousValueId(String ambiguousValueId) {
         this.ambiguousValueId = ambiguousValueId;
     }
 
