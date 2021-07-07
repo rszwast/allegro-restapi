@@ -12,18 +12,18 @@ public class RequestConfigurationBuilder {
 
     private RequestConfigurationBuilder(){}
 
+    public static RequestSpecification getDefaultRequestSpecification(){
+        RequestConfigurationBuilder requestConfigurationBuilder = new RequestConfigurationBuilder();
+        return requestConfigurationBuilder
+                .getRequestSpecBuilder().build();
+    }
+
     public static RequestSpecBuilder getRequestSpecBuilder() {
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
         return requestSpecBuilder
                 .setConfig(RestAssuredConfig.config().objectMapperConfig(objectMapperConfig().defaultObjectMapperType(ObjectMapperType.GSON)))
                 .setAccept("application/vnd.allegro.public.v1+json")
                 .addHeader("Authorization", "Bearer " + Authentication.getAccessToken());
-    }
-
-    public static RequestSpecification getDefaultRequestSpecification(){
-        RequestConfigurationBuilder requestConfigurationBuilder = new RequestConfigurationBuilder();
-        return requestConfigurationBuilder
-                .getRequestSpecBuilder().build();
     }
 }
 
